@@ -25,8 +25,7 @@ test_that("test Arctic Data Center data URL (fully up to date data file)", {
   expect_true(stringr::str_detect(folder_name, "^doi")) #starts with doi
 
   # remove files
-  file.remove(list.files(out, recursive = TRUE, full.names = TRUE))
-  file.remove(out)
+  unlink(out, recursive = TRUE, force = TRUE)
 })
 
 test_that("test Arctic Data Center data URL (fully up to date data file) with one data table", {
@@ -44,8 +43,7 @@ test_that("test Arctic Data Center data URL (fully up to date data file) with on
   expect_true(stringr::str_detect(folder_name, "^doi")) #starts with doi
 
   # remove files
-  file.remove(list.files(out, recursive = TRUE, full.names = TRUE))
-  file.remove(out)
+  unlink(out, recursive = TRUE, force = TRUE)
 })
 
 test_that("test Arctic Data Center data URL (fully up to date data file) with multiple data tables", {
@@ -64,8 +62,7 @@ test_that("test Arctic Data Center data URL (fully up to date data file) with mu
   expect_true(stringr::str_detect(folder_name, "^doi")) #starts with doi
 
   # remove files
-  file.remove(list.files(out, recursive = TRUE, full.names = TRUE))
-  file.remove(out)
+  unlink(out, recursive = TRUE, force = TRUE)
 })
 
 test_that("Data without metadata downloads and returns summary metadata", {
@@ -78,7 +75,6 @@ test_that("Data without metadata downloads and returns summary metadata", {
   expect_true(any(stringr::str_detect(files, "summary_metadata.csv")))
 
   # remove files
-  file.remove(list.files(out, recursive = TRUE, full.names = TRUE))
-  file.remove(out)
+  unlink(out, recursive = TRUE, force = TRUE)
 })
 
