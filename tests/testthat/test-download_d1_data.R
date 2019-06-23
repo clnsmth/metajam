@@ -21,10 +21,8 @@ test_that("test Arctic Data Center data URL (fully up to date data file)", {
   expect_true(any(stringr::str_detect(files, "full_metadata.xml")))
   expect_true(any(stringr::str_detect(files, "summary_metadata.csv")))
 
-  # FIXME: Revisit this test once directory and file path naming have been
-  # revised.
-  # folder_name <- stringr::str_extract(out, "[^/]*$")
-  # expect_true(stringr::str_detect(folder_name, "^doi")) #starts with doi
+  folder_name <- stringr::str_extract(out, "[^/]*$")
+  expect_true(stringr::str_detect(folder_name, "^doi")) #starts with doi
 
   # remove files
   unlink(out, recursive = TRUE, force = TRUE)
@@ -41,10 +39,8 @@ test_that("test Arctic Data Center data URL (fully up to date data file) with on
   expect_true(any(stringr::str_detect(files, "full_metadata.xml")))
   expect_true(any(stringr::str_detect(files, "summary_metadata.csv")))
 
-  # FIXME: Revisit this test once directory and file path naming have been
-  # revised.
-  # folder_name <- stringr::str_extract(out, "[^/]*$")
-  # expect_true(stringr::str_detect(folder_name, "^doi")) #starts with doi
+  folder_name <- stringr::str_extract(out, "[^/]*$")
+  expect_true(stringr::str_detect(folder_name, "^doi")) #starts with doi
 
   # remove files
   unlink(out, recursive = TRUE, force = TRUE)
@@ -62,10 +58,8 @@ test_that("test Arctic Data Center data URL (fully up to date data file) with mu
   expect_true(any(stringr::str_detect(files, "full_metadata.xml")))
   expect_true(any(stringr::str_detect(files, "summary_metadata.csv")))
 
-  # FIXME: Revisit this test once directory and file path naming have been
-  # revised.
-  # folder_name <- stringr::str_extract(out, "[^/]*$")
-  # expect_true(stringr::str_detect(folder_name, "^doi")) #starts with doi
+  folder_name <- stringr::str_extract(out, "[^/]*$")
+  expect_true(stringr::str_detect(folder_name, "^doi")) #starts with doi
 
   # remove files
   unlink(out, recursive = TRUE, force = TRUE)
