@@ -28,8 +28,7 @@ Imports:
     tidyr
 Remotes:
     DataONEorg/rdataone,
-    ropensci/EML,
-    cboettig/emld
+    ropensci/EML
 Suggests:
     testthat,
     knitr,
