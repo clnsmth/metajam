@@ -27,8 +27,7 @@ Imports:
     tibble,
     tidyr
 Remotes:
-    DataONEorg/rdataone,
-    ropensci/EML
+    DataONEorg/rdataone
 Suggests:
     testthat,
     knitr,
