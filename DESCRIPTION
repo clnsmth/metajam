@@ -16,7 +16,6 @@ URL: https://github.com/nceas/metajam
 BugReports: https://github.com/nceas/metajam/issues
 Imports:
     dataone,
-    rdataone,
     dplyr,
     EML,
     emld,
@@ -27,8 +26,6 @@ Imports:
     stringr,
     tibble,
     tidyr
-Remotes:
-    DataONEorg/rdataone
 Suggests:
     testthat,
     knitr,
