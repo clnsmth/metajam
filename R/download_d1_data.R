@@ -133,6 +133,7 @@ download_d1_data <- function(data_url, path) {
       Metadata_EML_Version = stringr::str_extract(meta_tabular$eml.version, "\\d\\.\\d\\.\\d"),
       File_Description = entity_data$entityDescription,
       File_Label = entity_data$entityLabel,
+      File_HeaderLines = meta_tabular$numHeaderLines,
       Dataset_URL = paste0("https://search.dataone.org/#view/", meta_id[[1]]),
       Dataset_Title = meta_tabular$title,
       Dataset_StartDate = meta_tabular$temporalCoverage.beginDate,

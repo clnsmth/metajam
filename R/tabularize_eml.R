@@ -54,7 +54,8 @@ tabularize_eml <- function(eml, full = FALSE) {
         grepl("taxonRankValue", name) ~ "taxonomicCoverage",
         grepl("methods", name) ~ "methods",
         grepl("objectName", name) ~ "objectName",
-        grepl("online.url", name) ~ "url"
+        grepl("online.url", name) ~ "url",
+        grepl("numHeaderLines", name) ~ "numHeaderLines"
       )) %>%
       dplyr::filter(!is.na(name)) %>%
       dplyr::mutate(value = stringr::str_trim(value)) %>%

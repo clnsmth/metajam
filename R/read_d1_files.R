@@ -42,24 +42,37 @@ read_d1_files <- function(folder_path, fnc = "read_csv", ...) {
     stop("You have multiple files named ", filename)
   }
 
-  data_meta <- purrr::map(files, function(x) {
+  meta <- purrr::map(files, function(x) {
     if (grepl("[^_]+_metadata(?=\\.csv)", basename(x), perl = TRUE)) {
       readr::read_csv(x)
-    } else if (tools::file_path_sans_ext(basename(x)) == filename) {
-      eval(parse(text = paste0(fnc, '("', normalizePath(x, winslash = '/'), '", ...)')))
     }
   })
 
-  data_meta_names <- purrr::map(files, function(x) {
+  meta_names <- purrr::map(files, function(x) {
     if (grepl("[^_]+_metadata(?=\\.csv)", basename(x), perl = TRUE)) {
       stringr::str_extract(basename(x), "[^_]+_metadata(?=\\.csv)")
-    } else if (tools::file_path_sans_ext(basename(x)) == filename) {
-      "data"
     }
   })
 
-  data_meta <- stats::setNames(data_meta, data_meta_names) %>%
+  meta <- stats::setNames(meta, meta_names)
+
+  # get number of header lines
+  header_lines <- as.numeric(summary[summary[["name"]] == "File_HeaderLines", "value"])
+
+  # in case there is no numHeaderLines in EML
+  lines_to_skip <- if (!is.na(header_lines)) header_lines - 1 else 0
+
+  # "skip" is a common argument name among popular CSV-parse functions (read.csv, read_csv, fread), so can be safe enough to specify
+  data <- purrr::map(files, function(x) {
+    if (tools::file_path_sans_ext(basename(x)) == filename) {
+    eval(parse(text = paste0(fnc, '("', normalizePath(x, winslash = '/'), '",', 'skip =', lines_to_skip, ', ...)')))
+    }
+  })
+
+  data_names <- "data"
+
+  data <- stats::setNames(data, data_names) %>%
     purrr::compact()
 
-  return(data_meta)
+    return(c(data, meta))
 }
