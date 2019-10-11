@@ -56,6 +56,7 @@ read_d1_files <- function(folder_path, fnc = "read_csv", ...) {
 
   meta <- stats::setNames(meta, meta_names)
 
+  summary <- meta[["summary_metadata"]]
   # get number of header lines
   header_lines <- as.numeric(summary[summary[["name"]] == "File_HeaderLines", "value"])
 
